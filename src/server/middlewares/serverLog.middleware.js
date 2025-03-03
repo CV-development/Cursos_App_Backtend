@@ -1,4 +1,4 @@
-// Middleware para loggear las peticiones al servidor
+// Middleware para logear las peticiones al servidor
 
 export const serverLog = (req, res, next) => {
   console.log({
