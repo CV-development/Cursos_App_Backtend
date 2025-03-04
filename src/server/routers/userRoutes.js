@@ -3,8 +3,8 @@ import { getUser, createUser, updateUser } from '../controllers/user.controller.
 
 const router = Router()
 
-router.get('/user/:id', getUser)
-router.post('/user', createUser)
-router.put('/user/:id', updateUser)
+router.get('/:id', getUser)
+router.post('/', createUser)
+router.put('/:id', updateUser)
 
 export default router
