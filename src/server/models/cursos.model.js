@@ -41,3 +41,13 @@ export const updateCourse = async (id, { titulo, descripcion, instructor, fecha_
     throw new Error(`Error al actualizar curso: ${error.message}`)
   }
 }
+
+// Obtener todos los cursos
+export const getAllCourses = async () => {
+  try {
+    const { rows } = await pool.query('SELECT * FROM cursos')
+    return rows
+  } catch (error) {
+    throw new Error(`Error al obtener todos los cursos: ${error.message}`)
+  }
+}

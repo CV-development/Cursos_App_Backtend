@@ -8,17 +8,19 @@ import { loginRouter, userRouter, errors, cursosRouter } from './routers/index.j
 const app = express()
 const PORT = process.env.PORT ?? 3000
 
-app.use(cors())
-app.use(express.json())
-app.use(morgan('dev'))
-// Middleware que aplica a todas las rutas
-app.use(serverLog)
+// Middlewares
+app.use(cors()) // Habilita CORS
+app.use(express.json()) // Parsea el cuerpo de las solicitudes JSON
+app.use(morgan('dev')) // Logs de las solicitudes en la consola
+app.use(serverLog) // Middleware personalizado para logging
 
-app.use('/api/auth', loginRouter)
-app.use('/api/users', userRouter)
-app.use('/api/curso', cursosRouter)
-app.use(errors)
+// Registrar rutas
+app.use('/api/auth', loginRouter) // Rutas de autenticación
+app.use('/api/users', userRouter) // Rutas de usuarios
+app.use('/api/cursos', cursosRouter) // Rutas de cursos (corregido a plural)
+app.use(errors) // Manejo de errores
 
+// Iniciar el servidor
 app.listen(PORT, () => console.log(`Server UP on port ${PORT}`))
 
 export default app
